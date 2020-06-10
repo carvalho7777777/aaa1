@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+
+
+{% block head_title %}Вход{% endblock %}
+
+{% block content %}
+<div class="card body col-lg-6 mx-auto">
+<div class="col-md-10 text-center mx-auto pt-2">
+
+<h1>Вход</h1>
+
+<form class="login text-center" method="POST" action="{% url 'login' %}">
+  {% csrf_token %}
+  {{ form|crispy }}
+  {% if redirect_field_value %}
+  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+  {% endif %}
+
+  <button class="btn btn-info my-4 btn-block" type="submit">Вход</button>
+</form>
+ 
+ <p>или:</p>
+ <a class="btn btn-outline-info waves-effect col-md-8 ml-0" href="{% url "social:begin" "google-oauth2" %}">
+ Вход через Google
+ </a>
+
+
+<hr>
+<p><a href="{% url 'password_reset' %}">Забыли свой пароль?</a></p>
+<p>Если вы еще не создали учетную запись, то пожалуйста
+<a href="{% url 'register' %}">зарегистрируйтесь</a> сначала.</p>
+
+</div>
+</div>
+{% endblock %}

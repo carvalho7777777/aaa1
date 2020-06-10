@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Добро пожаловать{% endblock %}
+
+{% block content %}
+<div class="card body col-lg-6 mx-auto">
+<div class="col-md-10 text-center mx-auto pt-2">
+ <h1>Добро пожаловать {{ new_user.first_name }}!</h1>
+ <p>Ваша учетная запись была успешно создана.
+ Сейчас вы можете <a href="{% url 'login' %}">войти</a>.</p>
+ </div>
+</div>
+
+{% endblock %}

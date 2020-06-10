@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}Edit your account{% endblock %}
+
+{% block content %}
+<div class="card body col-lg-12 mx-auto">
+<div class="col-lg-6 text-center mx-auto pt-2">
+
+	 <h1>Отредактируйте свой аккаунт</h1>
+
+
+ <form action="." method="post" enctype="multipart/form-data">
+
+ 		{% if messages %}
+ {% for message in messages %}
+ <div class="container alert alert-secondary fade show" role="alert">
+  <strong>{{ message|safe }}</strong>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+ </li>
+ {% endfor %}
+ </ul>
+{% endif %}
+
+ {{ company_form|crispy }}
+ {% csrf_token %}
+ <p><input class="btn btn-info my-4 btn-block" type="submit" value="Сохранить"></p>
+ </form>
+
+ </div>
+</div>
+{% endblock %}
